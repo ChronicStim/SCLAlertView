@@ -69,7 +69,7 @@ typedef NS_ENUM(NSInteger, SCLActionType)
  *
  * Target is an object that holds the information necessary to send a message to another object when an event occurs.
  */
-@property id target;
+@property (nonatomic, strong) id target;
 
 /** Set selector id.
  *
