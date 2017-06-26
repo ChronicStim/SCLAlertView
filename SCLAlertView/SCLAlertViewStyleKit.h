@@ -3,7 +3,7 @@
 //  SCLAlertView
 //
 //  Created by Diogo Autilio on 9/26/14.
-//  Copyright (c) 2014 AnyKey Entertainment. All rights reserved.
+//  Copyright (c) 2014-2016 AnyKey Entertainment. All rights reserved.
 //
 
 #if defined(__has_feature) && __has_feature(modules)
@@ -22,37 +22,43 @@
  *
  * TODO
  */
-+ (UIImage*)imageOfCheckmark;
++ (UIImage *)imageOfCheckmark;
 
 /** TODO
  *
  * TODO
  */
-+ (UIImage*)imageOfCross;
++ (UIImage *)imageOfCross;
 
 /** TODO
  *
  * TODO
  */
-+ (UIImage*)imageOfNotice;
++ (UIImage *)imageOfNotice;
 
 /** TODO
  *
  * TODO
  */
-+ (UIImage*)imageOfWarning;
++ (UIImage *)imageOfWarning;
 
 /** TODO
  *
  * TODO
  */
-+ (UIImage*)imageOfInfo;
++ (UIImage *)imageOfInfo;
 
 /** TODO
  *
  * TODO
  */
-+ (UIImage*)imageOfEdit;
++ (UIImage *)imageOfEdit;
+
+/** TODO
+ *
+ * TODO
+ */
++ (UIImage *)imageOfQuestion;
 
 /** TODO
  *
@@ -89,5 +95,11 @@
  * TODO
  */
 + (void)drawEdit;
+
+/** TODO
+ *
+ * TODO
+ */
++ (void)drawQuestion;
 
 @end
