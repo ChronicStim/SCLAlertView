@@ -221,6 +221,8 @@ SCLTimerDisplay *buttonTimer;
     _labelTitle.numberOfLines = 1;
     _labelTitle.textAlignment = NSTextAlignmentCenter;
     _labelTitle.font = [UIFont fontWithName:_titleFontFamily size:_titleFontSize];
+    _labelTitle.adjustsFontSizeToFitWidth = YES;
+    _labelTitle.minimumScaleFactor = 0.5f;
     _labelTitle.frame = CGRectMake(12.0f, kTitleTop, _windowWidth - 24.0f, kTitleHeight);
     
     // View text
