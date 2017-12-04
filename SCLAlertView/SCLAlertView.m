@@ -25,6 +25,11 @@
 #define PREDICTION_BAR_HEIGHT 40
 #define ADD_BUTTON_PADDING 10.0f
 #define DEFAULT_WINDOW_WIDTH 240
+#define SUBTITLE_MAX_HEIGHT_AS_PERCENT_OF_CONTENTVIEW_HEIGHT 0.50
+#define DEFAULT_WINDOW_WIDTH_AS_PERCENT_OF_SCREEN_WIDTH_IPHONE 0.80
+#define DEFAULT_WINDOW_WIDTH_AS_PERCENT_OF_SCREEN_WIDTH_IPAD 0.50
+#define MAX_WINDOW_HEIGHT_AS_PERCENT_OF_SCREEN_HEIGHT 0.90
+#define MIN_SUBTITLE_TEXTVIEW_HEIGHT 30
 
 @interface SCLAlertView ()  <UITextFieldDelegate, UIGestureRecognizerDelegate>
 
@@ -91,9 +96,20 @@ SCLTimerDisplay *buttonTimer;
     self = [super init];
     if (self)
     {
-        [self setupViewWindowWidth:DEFAULT_WINDOW_WIDTH];
+        [self setupViewWindowWidth:[SCLAlertView defaultWindowWidth]];
     }
     return self;
+}
+
++(CGFloat)defaultWindowWidth;
+{
+    CGFloat width = 0.0f;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        width = DEFAULT_WINDOW_WIDTH_AS_PERCENT_OF_SCREEN_WIDTH_IPAD;
+    } else {
+        width = DEFAULT_WINDOW_WIDTH_AS_PERCENT_OF_SCREEN_WIDTH_IPHONE;
+    }
+    return width;
 }
 
 - (instancetype)initWithWindowWidth:(CGFloat)windowWidth
@@ -108,7 +124,7 @@ SCLTimerDisplay *buttonTimer;
 
 - (instancetype)initWithNewWindow
 {
-    self = [self initWithWindowWidth:DEFAULT_WINDOW_WIDTH];
+    self = [self initWithWindowWidth:[SCLAlertView defaultWindowWidth]];
     if(self)
     {
         [self setupNewWindow];
@@ -138,6 +154,17 @@ SCLTimerDisplay *buttonTimer;
     {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserverForName:UIDeviceOrientationDidChangeNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+            
+            __weak __typeof__(self) weakSelf = self;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                __typeof__(self) strongSelf = weakSelf;
+                [strongSelf.view setNeedsLayout];
+                [strongSelf.view layoutIfNeeded];
+            });
+        }];
+        
         _canAddObservers = NO;
     }
 }
@@ -146,12 +173,25 @@ SCLTimerDisplay *buttonTimer;
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 
 #pragma mark - Setup view
 
 - (void)setupViewWindowWidth:(CGFloat)windowWidth
 {
+    // Get Screen Frame
+    CGRect mainScreenFame = [self mainScreenFrame];
+    CGFloat calculatedWindowWidth;
+    if (1.0f >= windowWidth) {
+        // Treat the windowWidth parameter as a % of screen width
+        calculatedWindowWidth = mainScreenFame.size.width * windowWidth;
+    } else {
+        // Treat the windowWidth parameter as actual
+        calculatedWindowWidth = windowWidth;
+    }
+    
     // Default values
     kCircleBackgroundTopPosition = -15.0f;
     kCircleHeight = 56.0f;
@@ -162,7 +202,7 @@ SCLTimerDisplay *buttonTimer;
     self.subTitleY = 70.0f;
     self.subTitleHeight = 90.0f;
     self.circleIconHeight = 20.0f;
-    self.windowWidth = windowWidth;
+    self.windowWidth = calculatedWindowWidth;
     self.windowHeight = 178.0f;
     self.shouldDismissOnTapOutside = NO;
     self.usingNewWindow = NO;
@@ -188,7 +228,7 @@ SCLTimerDisplay *buttonTimer;
     _circleView = [[UIView alloc] init];
     _circleViewBackground = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, kCircleHeightBackground, kCircleHeightBackground)];
     _circleIconImageView = [[UIImageView alloc] init];
-    _backgroundView = [[UIImageView alloc] initWithFrame:[self mainScreenFrame]];
+    _backgroundView = [[UIImageView alloc] initWithFrame:mainScreenFame];
     _buttons = [[NSMutableArray alloc] init];
     _inputs = [[NSMutableArray alloc] init];
     _customViews = [[NSMutableArray alloc] init];
@@ -280,6 +320,7 @@ SCLTimerDisplay *buttonTimer;
     [super viewWillLayoutSubviews];
     
     CGSize sz = [self mainScreenFrame].size;
+    CGFloat maxWindowHeight = sz.height * MAX_WINDOW_HEIGHT_AS_PERCENT_OF_SCREEN_HEIGHT; // Used to reduce size of subtitle content area
     
     // Check for larger top circle icon flag
     if (_useLargerIcon) {
@@ -322,7 +363,16 @@ SCLTimerDisplay *buttonTimer;
     CGRect newBackgroundFrame = self.backgroundView.frame;
     newBackgroundFrame.size = sz;
     self.backgroundView.frame = newBackgroundFrame;
-    
+
+    // Check if adjustments based on maxHeight are required
+    BOOL adjustSubtitleHeightRequired = NO;
+    CGFloat adjustmentAmount = 0.0f;
+    if (_windowHeight > maxWindowHeight) {
+        adjustmentAmount = (maxWindowHeight - _windowHeight);
+        _windowHeight = maxWindowHeight;
+        adjustSubtitleHeightRequired = YES;
+    }
+
     // Set new main frame
     CGRect r;
     if (self.view.superview != nil)
@@ -343,12 +393,23 @@ SCLTimerDisplay *buttonTimer;
     _circleViewBackground.layer.cornerRadius = _circleViewBackground.frame.size.height / 2;
     _circleView.layer.cornerRadius = _circleView.frame.size.height / 2;
     _circleIconImageView.frame = CGRectMake(kCircleHeight / 2 - _circleIconHeight / 2, kCircleHeight / 2 - _circleIconHeight / 2, _circleIconHeight, _circleIconHeight);
+    
+    // Title field
     _labelTitle.frame = CGRectMake(12.0f, kTitleTop, _windowWidth - 24.0f, kTitleHeight);
-    
-    // Text fields
     CGFloat y = (_labelTitle.text == nil) ? kTitleTop : kTitleTop + _labelTitle.frame.size.height;
+
+    if (adjustSubtitleHeightRequired) {
+        // Need to adjust subTitleHeight
+        // Check if max adjustment can be made
+        if (roundf(_subTitleHeight + adjustmentAmount) < MIN_SUBTITLE_TEXTVIEW_HEIGHT) {
+            // Max adjustment is too big, so just take what you can
+            _subTitleHeight = MIN_SUBTITLE_TEXTVIEW_HEIGHT;
+        } else {
+            _subTitleHeight = roundf(_subTitleHeight + adjustmentAmount);
+        }
+    }
     _viewText.frame = CGRectMake(12.0f, y, _windowWidth - 24.0f, _subTitleHeight);
-    
+
     if (!_labelTitle && !_viewText) {
         y = 0.0f;
     }
@@ -388,6 +449,11 @@ SCLTimerDisplay *buttonTimer;
     
     // Adjust corner radius, if a value has been passed
     _contentView.layer.cornerRadius = self.cornerRadius ? self.cornerRadius : 5.0f;
+    
+    // Check for window boundary violation
+    if (!CGRectContainsRect([self mainScreenFrame], [self.view frame])) {
+        NSLog(@"Window boundary violation: SCLAlertView frame = %@",NSStringFromCGRect(self.view.frame));
+    }
 }
 
 #pragma mark - UIViewController
@@ -916,20 +982,22 @@ SCLTimerDisplay *buttonTimer;
         }
         
         // Adjust text view size, if necessary
-        CGSize sz = CGSizeMake(_windowWidth - 24.0f, CGFLOAT_MAX);
+        CGSize sz = CGSizeMake(_windowWidth - 24.0f, (self.view.bounds.size.height * SUBTITLE_MAX_HEIGHT_AS_PERCENT_OF_CONTENTVIEW_HEIGHT));
         
         CGSize size = [_viewText sizeThatFits:sz];
         
         CGFloat ht = ceilf(size.height);
         if (ht < _subTitleHeight)
         {
+            // textView is shorter than expected.
             self.windowHeight -= (_subTitleHeight - ht);
             self.subTitleHeight = ht;
         }
         else
         {
-            self.windowHeight += (ht - _subTitleHeight);
-            self.subTitleHeight = ht;
+            // textView is too tall, so cap the size at the max allowed
+            self.windowHeight += (sz.height - _subTitleHeight);
+            self.subTitleHeight = sz.height;
         }
         _viewText.frame = CGRectMake(12.0f, _subTitleY, _windowWidth - 24.0f, _subTitleHeight);
     }
