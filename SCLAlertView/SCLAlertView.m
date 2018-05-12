@@ -358,6 +358,20 @@ SCLTimerDisplay *buttonTimer;
         }
     }
     
+    // Set new background frame
+    CGRect newBackgroundFrame = self.backgroundView.frame;
+    newBackgroundFrame.size = sz;
+    self.backgroundView.frame = newBackgroundFrame;
+
+    // Check if adjustments based on maxHeight are required
+    BOOL adjustSubtitleHeightRequired = NO;
+    CGFloat _subtitleHeightAdjustmentAmount = 0.0f;
+    if (_windowHeight > maxWindowHeight) {
+        _subtitleHeightAdjustmentAmount = (maxWindowHeight - _windowHeight);
+        _windowHeight = maxWindowHeight;
+        adjustSubtitleHeightRequired = YES;
+    }
+
     // Set new main frame
     CGRect r;
     if (self.view.superview != nil) {
@@ -367,14 +381,9 @@ SCLTimerDisplay *buttonTimer;
         // View is not visible, position outside screen bounds
         r = CGRectMake((sz.width-_windowWidth)/2, -_windowHeight, _windowWidth, _windowHeight);
     }
-    self.view.frame = r;
-    
-    // Set new background frame
-    CGRect newBackgroundFrame = self.backgroundView.frame;
-    newBackgroundFrame.size = sz;
-    self.backgroundView.frame = newBackgroundFrame;
     
     // Set frames
+    self.view.frame = r;
     _contentView.frame = CGRectMake(0.0f, 0.0f, _windowWidth, _windowHeight);
     _circleViewBackground.frame = CGRectMake(_windowWidth / 2 - kCircleHeightBackground / 2, kCircleBackgroundTopPosition, kCircleHeightBackground, kCircleHeightBackground);
     _circleViewBackground.layer.cornerRadius = _circleViewBackground.frame.size.height / 2;
@@ -388,11 +397,11 @@ SCLTimerDisplay *buttonTimer;
     if (adjustSubtitleHeightRequired) {
         // Need to adjust subTitleHeight
         // Check if max adjustment can be made
-        if (roundf(_subTitleHeight + adjustmentAmount) < MIN_SUBTITLE_TEXTVIEW_HEIGHT) {
+        if (roundf(_subTitleHeight + _subtitleHeightAdjustmentAmount) < MIN_SUBTITLE_TEXTVIEW_HEIGHT) {
             // Max adjustment is too big, so just take what you can
             _subTitleHeight = MIN_SUBTITLE_TEXTVIEW_HEIGHT;
         } else {
-            _subTitleHeight = roundf(_subTitleHeight + adjustmentAmount);
+            _subTitleHeight = roundf(_subTitleHeight + _subtitleHeightAdjustmentAmount);
         }
     }
     _viewText.frame = CGRectMake(12.0f, y, _windowWidth - 24.0f, _subTitleHeight);
