@@ -332,7 +332,7 @@
 		DDB15F9519D5B7C600173158 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0910;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "AnyKey Entertainment";
 				TargetAttributes = {
 					DDB15F9C19D5B7C600173158 = {
