@@ -12,6 +12,7 @@
 #import "UIImage+ImageEffects.h"
 #import "SCLTimerDisplay.h"
 #import "SCLMacros.h"
+#import "UIViewController+Custom.h"
 
 #if defined(__has_feature) && __has_feature(modules)
 @import AVFoundation;
@@ -297,8 +298,15 @@ SCLTimerDisplay *buttonTimer;
 }
 
 - (void)setupNewWindow {
+    
+    // Locate currentViewController
+    UIViewController *currentViewController = [UIViewController currentViewController];
     // Save previous window
-    self.previousWindow = [UIApplication sharedApplication].keyWindow;
+    if (nil != currentViewController) {
+        self.previousWindow = currentViewController.view.window;
+    } else {
+        self.previousWindow = [UIApplication sharedApplication].keyWindow;
+    }
     
     // Create a new one to show the alert
     UIWindow *alertWindow = [[UIWindow alloc] initWithFrame:[self mainScreenFrame]];

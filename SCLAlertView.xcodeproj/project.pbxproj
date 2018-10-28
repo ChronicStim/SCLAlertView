@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E5B1CA32186273C0087376F /* UIViewController+Custom.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E5B1CA12186273C0087376F /* UIViewController+Custom.h */; };
+		3E5B1CA42186273C0087376F /* UIViewController+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5B1CA22186273C0087376F /* UIViewController+Custom.m */; };
+		3E5B1CA52186273C0087376F /* UIViewController+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5B1CA22186273C0087376F /* UIViewController+Custom.m */; };
+		3E5B1CA62186273C0087376F /* UIViewController+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5B1CA22186273C0087376F /* UIViewController+Custom.m */; };
 		3E9DC76E1FD5A3C100225DFB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDB15FCF19D5B8BF00173158 /* Images.xcassets */; };
 		572BB1471B8383B3002DEE38 /* SCLTimerDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 572BB1461B8383B3002DEE38 /* SCLTimerDisplay.m */; };
 		726C8FA61EF803310060F33B /* SCLAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB15FD819D5B98800173158 /* SCLAlertView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -53,6 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E5B1CA12186273C0087376F /* UIViewController+Custom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Custom.h"; sourceTree = "<group>"; };
+		3E5B1CA22186273C0087376F /* UIViewController+Custom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Custom.m"; sourceTree = "<group>"; };
 		44E430DB1D889255002FE849 /* SCLAlertViewFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCLAlertViewFramework.h; sourceTree = "<group>"; };
 		572BB1451B8383B3002DEE38 /* SCLTimerDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLTimerDisplay.h; sourceTree = "<group>"; };
 		572BB1461B8383B3002DEE38 /* SCLTimerDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLTimerDisplay.m; sourceTree = "<group>"; };
@@ -233,6 +239,8 @@
 				DD24453B1BAC383600892117 /* SCLTextView.m */,
 				CF6FB1221C5926FC009715F3 /* SCLSwitchView.h */,
 				CF6FB1231C5926FC009715F3 /* SCLSwitchView.m */,
+				3E5B1CA12186273C0087376F /* UIViewController+Custom.h */,
+				3E5B1CA22186273C0087376F /* UIViewController+Custom.m */,
 			);
 			path = SCLAlertView;
 			sourceTree = "<group>";
@@ -262,6 +270,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E5B1CA32186273C0087376F /* UIViewController+Custom.h in Headers */,
 				726C8FA61EF803310060F33B /* SCLAlertView.h in Headers */,
 				726C8FA91EF805650060F33B /* SCLSwitchView.h in Headers */,
 				726C8FA81EF805620060F33B /* SCLTextView.h in Headers */,
@@ -332,7 +341,7 @@
 		DDB15F9519D5B7C600173158 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "AnyKey Entertainment";
 				TargetAttributes = {
 					DDB15F9C19D5B7C600173158 = {
@@ -403,6 +412,7 @@
 				DD2E172A19FA84B800CBAEC3 /* UIImage+ImageEffects.m in Sources */,
 				DDB15FCB19D5B88A00173158 /* ViewController.m in Sources */,
 				DDB15FD419D5B8DB00173158 /* main.m in Sources */,
+				3E5B1CA42186273C0087376F /* UIViewController+Custom.m in Sources */,
 				CF6FB1241C5926FC009715F3 /* SCLSwitchView.m in Sources */,
 				DDB15FE119D5D85B00173158 /* SCLAlertViewStyleKit.m in Sources */,
 				DD24453C1BAC383600892117 /* SCLTextView.m in Sources */,
@@ -419,6 +429,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDB15FBD19D5B7C600173158 /* SCLAlertViewTests.m in Sources */,
+				3E5B1CA52186273C0087376F /* UIViewController+Custom.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +443,7 @@
 				EF994B161D47AB4A00619DFF /* SCLAlertView.m in Sources */,
 				EF994B181D47AB4A00619DFF /* SCLAlertViewResponder.m in Sources */,
 				EF994B171D47AB4A00619DFF /* SCLButton.m in Sources */,
+				3E5B1CA62186273C0087376F /* UIViewController+Custom.m in Sources */,
 				EF994B1B1D47AB4A00619DFF /* SCLTextView.m in Sources */,
 				EF994B151D47AB4A00619DFF /* UIImage+ImageEffects.m in Sources */,
 			);
