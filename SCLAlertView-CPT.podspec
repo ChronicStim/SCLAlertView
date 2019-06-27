@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "SCLAlertView-CPT"
-  spec.version      = "10.0.0"
+  spec.version      = "10.0.1"
   spec.summary      = "Version of SCLAlertView with specifics for CPT Project"
   spec.homepage     = 'https://github.com/ChronicStim/SCLAlertView.git'
 

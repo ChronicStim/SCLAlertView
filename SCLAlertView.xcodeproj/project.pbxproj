@@ -23,7 +23,7 @@
 		DD06C2331C64EB1A00E6F6B0 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD06C2321C64EB1A00E6F6B0 /* Accelerate.framework */; };
 		DD06C2371C64EB9200E6F6B0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD06C2361C64EB9200E6F6B0 /* CoreGraphics.framework */; };
 		DD24453C1BAC383600892117 /* SCLTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24453B1BAC383600892117 /* SCLTextView.m */; };
-		DD2E172A19FA84B800CBAEC3 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2E172919FA84B800CBAEC3 /* UIImage+ImageEffects.m */; };
+		DD2E172A19FA84B800CBAEC3 /* UIImage+SCLAlertView_ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2E172919FA84B800CBAEC3 /* UIImage+SCLAlertView_ImageEffects.m */; };
 		DD4B77E41D8C580B00CF97C7 /* SCLAlertViewFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 44E430DB1D889255002FE849 /* SCLAlertViewFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD4BA9C119DED8EF008D73EB /* right_answer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DD4BA9C019DED8EF008D73EB /* right_answer.mp3 */; };
 		DD7282B919D6087C00077F54 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD7282B719D6087C00077F54 /* Storyboard.storyboard */; };
@@ -36,7 +36,7 @@
 		DDB15FDE19D5BCF400173158 /* SCLAlertViewResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB15FDD19D5BCF400173158 /* SCLAlertViewResponder.m */; };
 		DDB15FE119D5D85B00173158 /* SCLAlertViewStyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB15FE019D5D85B00173158 /* SCLAlertViewStyleKit.m */; };
 		DDB2BA1B1E55D4260009DAC9 /* comic-sans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDB2BA1A1E55D4260009DAC9 /* comic-sans.ttf */; };
-		EF994B151D47AB4A00619DFF /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2E172919FA84B800CBAEC3 /* UIImage+ImageEffects.m */; };
+		EF994B151D47AB4A00619DFF /* UIImage+SCLAlertView_ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2E172919FA84B800CBAEC3 /* UIImage+SCLAlertView_ImageEffects.m */; };
 		EF994B161D47AB4A00619DFF /* SCLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB15FD619D5B96500173158 /* SCLAlertView.m */; };
 		EF994B171D47AB4A00619DFF /* SCLButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB15FDA19D5BAA000173158 /* SCLButton.m */; };
 		EF994B181D47AB4A00619DFF /* SCLAlertViewResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB15FDD19D5BCF400173158 /* SCLAlertViewResponder.m */; };
@@ -73,8 +73,8 @@
 		DD0D295B19D902DA00881F53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = SCLAlertViewExample/Info.plist; sourceTree = SOURCE_ROOT; };
 		DD24453A1BAC383600892117 /* SCLTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLTextView.h; sourceTree = "<group>"; };
 		DD24453B1BAC383600892117 /* SCLTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLTextView.m; sourceTree = "<group>"; };
-		DD2E172819FA84B800CBAEC3 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
-		DD2E172919FA84B800CBAEC3 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		DD2E172819FA84B800CBAEC3 /* UIImage+SCLAlertView_ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SCLAlertView_ImageEffects.h"; sourceTree = "<group>"; };
+		DD2E172919FA84B800CBAEC3 /* UIImage+SCLAlertView_ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SCLAlertView_ImageEffects.m"; sourceTree = "<group>"; };
 		DD2F03171AAFA4E0007BC507 /* SCLMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCLMacros.h; sourceTree = "<group>"; };
 		DD4BA9C019DED8EF008D73EB /* right_answer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = right_answer.mp3; sourceTree = "<group>"; };
 		DD4BA9C219DEDD8E008D73EB /* SCLAlertView-Objective-C-prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SCLAlertView-Objective-C-prefix.pch"; path = "SCLAlertViewExample/SCLAlertView-Objective-C-prefix.pch"; sourceTree = SOURCE_ROOT; };
@@ -222,8 +222,8 @@
 		DDB15FD519D5B96500173158 /* SCLAlertView */ = {
 			isa = PBXGroup;
 			children = (
-				DD2E172819FA84B800CBAEC3 /* UIImage+ImageEffects.h */,
-				DD2E172919FA84B800CBAEC3 /* UIImage+ImageEffects.m */,
+				DD2E172819FA84B800CBAEC3 /* UIImage+SCLAlertView_ImageEffects.h */,
+				DD2E172919FA84B800CBAEC3 /* UIImage+SCLAlertView_ImageEffects.m */,
 				DDB15FD819D5B98800173158 /* SCLAlertView.h */,
 				DDB15FD619D5B96500173158 /* SCLAlertView.m */,
 				DDB15FD919D5BAA000173158 /* SCLButton.h */,
@@ -353,6 +353,8 @@
 					};
 					EF994B071D47AB1400619DFF = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = TPMZGZXERR;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -361,6 +363,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -409,7 +412,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD2E172A19FA84B800CBAEC3 /* UIImage+ImageEffects.m in Sources */,
+				DD2E172A19FA84B800CBAEC3 /* UIImage+SCLAlertView_ImageEffects.m in Sources */,
 				DDB15FCB19D5B88A00173158 /* ViewController.m in Sources */,
 				DDB15FD419D5B8DB00173158 /* main.m in Sources */,
 				3E5B1CA42186273C0087376F /* UIViewController+Custom.m in Sources */,
@@ -445,7 +448,7 @@
 				EF994B171D47AB4A00619DFF /* SCLButton.m in Sources */,
 				3E5B1CA62186273C0087376F /* UIViewController+Custom.m in Sources */,
 				EF994B1B1D47AB4A00619DFF /* SCLTextView.m in Sources */,
-				EF994B151D47AB4A00619DFF /* UIImage+ImageEffects.m in Sources */,
+				EF994B151D47AB4A00619DFF /* UIImage+SCLAlertView_ImageEffects.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,20 +639,24 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = TPMZGZXERR;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = SCLAlertViewFramework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.anykey.SCLAlertViewFramework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -660,21 +667,25 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = TPMZGZXERR;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = SCLAlertViewFramework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.anykey.SCLAlertViewFramework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

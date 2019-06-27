@@ -9,7 +9,7 @@
 #import "SCLAlertView.h"
 #import "SCLAlertViewResponder.h"
 #import "SCLAlertViewStyleKit.h"
-#import "UIImage+ImageEffects.h"
+#import "UIImage+SCLAlertView_ImageEffects.h"
 #import "SCLTimerDisplay.h"
 #import "SCLMacros.h"
 #import "UIViewController+Custom.h"

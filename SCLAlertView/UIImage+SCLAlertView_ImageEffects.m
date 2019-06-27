@@ -1,5 +1,5 @@
 /*
- File: UIImage+ImageEffects.m
+ File: UIImage+SCLAlertView_ImageEffects.m
  Abstract: This is a category of UIImage that adds methods to apply blur and tint effects to an image. This is the code you’ll want to look out to find out how to use vImage to efficiently calculate a blur.
  Version: 1.0
  
@@ -93,7 +93,7 @@
  5/3/2013
  */
 
-#import "UIImage+ImageEffects.h"
+#import "UIImage+SCLAlertView_ImageEffects.h"
 #import "SCLMacros.h"
 
 #if defined(__has_feature) && __has_feature(modules)
@@ -104,7 +104,7 @@
 #import <float.h>
 
 
-@implementation UIImage (ImageEffects)
+@implementation UIImage (SCLAlertView_ImageEffects)
 
 
 - (UIImage *)applyLightEffect
