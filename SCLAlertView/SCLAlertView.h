@@ -14,6 +14,7 @@
 #import "SCLButton.h"
 #import "SCLTextView.h"
 #import "SCLSwitchView.h"
+#import "SCLDatePickerView.h"
 
 typedef NSAttributedString* (^SCLAttributedFormatBlock)(NSString *value);
 typedef void (^SCLDismissBlock)(void);
@@ -296,6 +297,11 @@ typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
  * @param textField The custom textfield provided by the programmer.
  */
 - (void)addCustomTextField:(UITextField *)textField;
+
+/** Add a datePicker view
+*
+*/
+- (SCLDatePickerView *)addDatePickerView;
 
 /** Add a switch view
  *

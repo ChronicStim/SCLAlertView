@@ -625,6 +625,22 @@ SCLTimerDisplay *buttonTimer;
     return customView;
 }
 
+#pragma mark - DatePickerView
+
+- (SCLDatePickerView *)addDatePickerView
+{
+    // Add switch view
+    SCLDatePickerView *datePickerView = [[SCLDatePickerView alloc] initWithFrame:CGRectMake(0, 0, self.windowWidth, 200.0f)];
+    
+    // Update view height
+    self.windowHeight += datePickerView.bounds.size.height + 10.0f;
+    
+    [_contentView addSubview:datePickerView];
+    [_inputs addObject:datePickerView];
+    
+    return datePickerView;
+}
+
 #pragma mark - SwitchView
 
 - (SCLSwitchView *)addSwitchViewWithLabel:(NSString *)label

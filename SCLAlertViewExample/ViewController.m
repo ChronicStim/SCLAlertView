@@ -428,6 +428,20 @@ NSString *kAttributeTitle = @"Attributed string operation successfully completed
     [alert showCustom:self image:[UIImage imageNamed:@"switch"] color:[UIColor brownColor] title:kInfoTitle subTitle:kSubtitle closeButtonTitle:nil duration:0.0f];
 }
 
+- (IBAction)showDatePicker:(id)sender {
+    SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
+    
+    SCLDatePickerView *datePickerView = [alert addDatePickerView];
+
+    [alert addButton:@"Pick a Party Date" actionBlock:^{
+        
+        NSDate *selectedDate = datePickerView.pickerCurrentDate;
+        NSLog(@"User picked this date: %@",[selectedDate description]);
+    }];
+    
+    [alert showCustom:self image:[UIImage imageNamed:@"git"] color:[UIColor greenColor] title:@"Let's Party!!" subTitle:@"We need you to choose a date for your engagement party:" closeButtonTitle:@"No party for me" duration:0.0f];
+}
+
 - (void)firstButton
 {
     NSLog(@"First button tapped");
